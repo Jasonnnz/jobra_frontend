@@ -1,9 +1,11 @@
 import TrelloBoard from './TrelloBoard';
+import { useState, useEffect } from 'react';
 
-function MainPage(){
+function MainPage({currentUser, setEventBus, eventBus}){
+
     return (
         <div>
-            <TrelloBoard></TrelloBoard>
+            <TrelloBoard eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} ></TrelloBoard>
         </div>
     );
 }

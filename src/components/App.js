@@ -7,8 +7,18 @@ import NavBar from './NavBar';
 import MainPage from './MainPage';
 
 function App(props) {
-  const [ currentUser,setCurrentUser ] = useState(null);
+  const [ currentUser,setCurrentUser ] = useState({lanes:[]});
+  const [eventBus, setEventBus] = useState(null)
+  // const [cards, setCards] = useState([])
 
+  useEffect(()=>{
+      fetch('http://localhost:3000/me')
+      .then(r => r.json())
+      .then(loggedUser => {
+          setCurrentUser(loggedUser)
+      })
+  },[])
+  // console.log(eventBus)
   return (
     <div className="App">
       <Switch>
@@ -17,7 +27,7 @@ function App(props) {
         </Route>
         <Route exact path="/main">
           <NavBar></NavBar>
-          <MainPage></MainPage>
+          <MainPage eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} ></MainPage>
         </Route>
       </Switch>
     </div>
