@@ -9,7 +9,6 @@ import MainPage from './MainPage';
 function App(props) {
   const [ currentUser,setCurrentUser ] = useState({lanes:[]});
   const [eventBus, setEventBus] = useState(null)
-  // const [cards, setCards] = useState([])
 
   useEffect(()=>{
       fetch('http://localhost:3000/me')
@@ -18,6 +17,18 @@ function App(props) {
           setCurrentUser(loggedUser)
       })
   },[])
+
+  function moveCard(user){
+    // debugger
+    setCurrentUser(user) 
+    //DONT FORGET TO CHANGE BACKEND
+    //manipulate data to get rid of old card and put in new card. use a filter w a bang
+    //for adding use spread operator.
+    //still use setCurrentUser(newUserVar)
+
+    // eventBus.publish({type: 'MOVE_CARD', fromLaneId: sourceLaneId, toLaneId: targetLaneId, cardId: card.id, index: 0})
+  }
+  console.log(currentUser)
   // console.log(eventBus)
   return (
     <div className="App">
@@ -27,7 +38,7 @@ function App(props) {
         </Route>
         <Route exact path="/main">
           <NavBar></NavBar>
-          <MainPage eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} ></MainPage>
+          <MainPage moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} ></MainPage>
         </Route>
       </Switch>
     </div>

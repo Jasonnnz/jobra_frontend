@@ -1,16 +1,11 @@
 import Board from 'react-trello';
 import { useState, useEffect } from 'react';
 
-function TrelloBoard({currentUser, setEventBus, eventBus}){
+function TrelloBoard({currentUser, setEventBus, eventBus, moveCard}){
     
     let handleEventBus = (eventBus) => {
         setEventBus(eventBus)
     }
-
-    // const appliedCards = cards.filter((card) => card.label === "Applied")
-    // const acceptedCards = cards.filter((card) => card.label === "Accepted")
-    // const rejectedCards = cards.filter((card) => card.label === "Rejected")
-    
     
     // const handleDragStart = (cardId, laneId) => {
     //     console.log('drag started')
@@ -19,10 +14,10 @@ function TrelloBoard({currentUser, setEventBus, eventBus}){
     // }
 
     const handleDragEnd = (cardId, sourceLaneId, targetLaneId) => {
-        console.log('drag ended')
-        console.log(`cardId: ${cardId}`)
-        console.log(`sourceLaneId: ${sourceLaneId}`)
-        console.log(`targetLaneId: ${targetLaneId}`)
+        // console.log('drag ended')
+        // console.log(`cardId: ${cardId}`)
+        // console.log(`sourceLaneId: ${sourceLaneId}`)
+        // console.log(`targetLaneId: ${targetLaneId}`)
         fetch(`http://localhost:3000/cards/${cardId}`, {
             method: 'PATCH',
             headers: {
@@ -30,11 +25,19 @@ function TrelloBoard({currentUser, setEventBus, eventBus}){
             },
             body: JSON.stringify({label: targetLaneId})
         }) //backend persists
+        .then(r => r.json())
+        .then(user => {
+            moveCard(user) //card, sourceLaneId, targetLaneId
+        })
     }
 
     // const shouldReceiveNewData = (nextData) => {
     //     console.log(nextData)
     // }
+
+    const handleDataChange = (newData) => {
+        console.log(newData)
+    }
 
     // const handleCardAdd = (card, laneId) => {
     //     fetch('http://localhost:3000/cards', {
@@ -60,8 +63,10 @@ function TrelloBoard({currentUser, setEventBus, eventBus}){
             // onDataChange={shouldReceiveNewData}
             // onCardAdd={handleCardAdd}
             // handleDragStart={handleDragStart}
+            onSubmit={handleDataChange}
             handleDragEnd={handleDragEnd}
             eventBusHandle={handleEventBus}
+            onDataChange={handleDataChange}
             />
         </div>
     );
