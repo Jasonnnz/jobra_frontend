@@ -58,12 +58,11 @@ function TrelloBoard({currentUser, setEventBus, eventBus, moveCard}){
     return(
         <div>
             <Board data={{lanes: currentUser.lanes}}
-            editable
             draggable 
             // onDataChange={shouldReceiveNewData}
             // onCardAdd={handleCardAdd}
             // handleDragStart={handleDragStart}
-            onSubmit={handleDataChange}
+            onSubmit={handleDataChange} // MAKE ONCARDCLICK INSTEAD
             handleDragEnd={handleDragEnd}
             eventBusHandle={handleEventBus}
             onDataChange={handleDataChange}
