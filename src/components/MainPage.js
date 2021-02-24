@@ -3,8 +3,7 @@ import TrelloBoard from './TrelloBoard';
 function MainPage(){
     return (
         <div>
-            "Hi"
-            {/* <TrelloBoard></TrelloBoard> */}
+            <TrelloBoard></TrelloBoard>
         </div>
     );
 }
