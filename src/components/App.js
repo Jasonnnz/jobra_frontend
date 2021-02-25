@@ -19,7 +19,6 @@ function App(props) {
   },[])
 
   function moveCard(user){
-    // debugger
     setCurrentUser(user) 
     //DONT FORGET TO CHANGE BACKEND
     //manipulate data to get rid of old card and put in new card. use a filter w a bang

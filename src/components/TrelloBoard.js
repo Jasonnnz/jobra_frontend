@@ -6,9 +6,6 @@ function TrelloBoard({currentUser, setEventBus, eventBus, moveCard}){
     let handleEventBus = (eventBus) => {
         setEventBus(eventBus)
     }
-    
-    // const handleDragStart = (cardId, laneId) => {
-    // }
 
     const handleDragEnd = (cardId, sourceLaneId, targetLaneId) => {
         fetch(`http://localhost:3000/cards/${cardId}`, {
