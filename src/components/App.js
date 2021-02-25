@@ -14,9 +14,23 @@ function App(props) {
       fetch('http://localhost:3000/me')
       .then(r => r.json())
       .then(loggedUser => {
+          // console.log(loggedUser)
           setCurrentUser(loggedUser)
       })
   },[])
+
+  function addCard(user){
+    // let interestedLaneCards = currentUser.lanes[0].cards
+    // interestedLaneCards.push(card)
+    setCurrentUser(user)
+    // console.log(currentUser)
+  }
+
+  function delCard(card){
+    let oldLane = currentUser.lanes.filter((l) => l.id === card.label)
+    let updatedLaneCards = oldLane.cards.filter((c) => c.id !== card.id)
+    
+  }
 
   function moveCard(user){
     setCurrentUser(user) 
@@ -27,7 +41,7 @@ function App(props) {
 
     // eventBus.publish({type: 'MOVE_CARD', fromLaneId: sourceLaneId, toLaneId: targetLaneId, cardId: card.id, index: 0})
   }
-  console.log(currentUser)
+  // console.log(currentUser.lanes[0])
   // console.log(eventBus)
   return (
     <div className="App">
@@ -37,7 +51,7 @@ function App(props) {
         </Route>
         <Route exact path="/main">
           <NavBar></NavBar>
-          <MainPage moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} ></MainPage>
+          <MainPage addCard={addCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} setCurrentUser={setCurrentUser} ></MainPage>
         </Route>
       </Switch>
     </div>

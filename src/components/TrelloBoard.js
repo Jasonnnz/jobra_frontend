@@ -26,7 +26,7 @@ function TrelloBoard({currentUser, setEventBus, eventBus, moveCard}){
     // }
 
     const handleDataChange = (newData) => {
-        console.log(newData)
+        // console.log(newData)
     }
 
     // const handleCardAdd = (card, laneId) => {
@@ -47,7 +47,7 @@ function TrelloBoard({currentUser, setEventBus, eventBus, moveCard}){
     //data={{lanes: currentUser.lanes}}
     return(
         <div> 
-            <Board data={{lanes: currentUser.lanes}}
+            <Board data={{lanes: currentUser.lanes}} className="overall-board"
             draggable 
             // editable
             // onDataChange={shouldReceiveNewData}
