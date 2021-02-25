@@ -43,13 +43,13 @@ function CardForm({addCard, currentUser, setCurrentUser}){
     function handleSearch(e){
 		setSearch(e.target.value)
         let searchedCards = currentUser.cards.filter((c) => c.title.toLowerCase().includes(e.target.value.toLowerCase()))
-		
+
 	}
     
     return (
-        <div>
+        <div className="searchbar">
             <button onClick={openModal}>Add Card</button>
-			<input type="text" value={search} onChange={handleSearch}></input>
+			<input type="text" value={search} onChange={handleSearch} placeholder="Search..."></input>
             <Modal disableAutoFocus={true} isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Modal" className="formModal" overlayClassName="Overlay">
                 <button onClick={closeModal}>X</button>
                 <div>{form}</div>

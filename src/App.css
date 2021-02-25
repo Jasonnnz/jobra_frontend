@@ -22,3 +22,29 @@
   justify-content: center;
   align-items: center;
 }
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.jobra {
+  display: flex;
+  float: left;
+  padding-left: 25px;
+  justify-content: flex-start;
+}
+
+.profile {
+  display: flex;
+  float: right;
+  padding-right: 25px;
+  justify-content: flex-end;
+}
+
+.searchbar {
+  background-color: darkgrey;
+}

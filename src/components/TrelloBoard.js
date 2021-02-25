@@ -36,6 +36,7 @@ function TrelloBoard({currentUser, setEventBus, eventBus, moveCard, delCard}){
         <div> 
             <Board data={{lanes: currentUser.lanes}} className="overall-board"
             style={{backgroundColor: "lightsteelblue"}}
+            laneStyle={{backgroundColor: "lightpink"}}
             // draggable 
             // editable
             // onSubmit={handleDataChange} // MAKE ONCARDCLICK INSTEAD
