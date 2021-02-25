@@ -8,16 +8,9 @@ function TrelloBoard({currentUser, setEventBus, eventBus, moveCard}){
     }
     
     // const handleDragStart = (cardId, laneId) => {
-    //     console.log('drag started')
-    //     console.log(`cardId: ${cardId}`)
-    //     console.log(`laneId: ${laneId}`)
     // }
 
     const handleDragEnd = (cardId, sourceLaneId, targetLaneId) => {
-        // console.log('drag ended')
-        // console.log(`cardId: ${cardId}`)
-        // console.log(`sourceLaneId: ${sourceLaneId}`)
-        // console.log(`targetLaneId: ${targetLaneId}`)
         fetch(`http://localhost:3000/cards/${cardId}`, {
             method: 'PATCH',
             headers: {
@@ -54,11 +47,12 @@ function TrelloBoard({currentUser, setEventBus, eventBus, moveCard}){
     //     })
     //     console.dir(card)
     // }
-
+    //data={{lanes: currentUser.lanes}}
     return(
-        <div>
+        <div> 
             <Board data={{lanes: currentUser.lanes}}
             draggable 
+            // editable
             // onDataChange={shouldReceiveNewData}
             // onCardAdd={handleCardAdd}
             // handleDragStart={handleDragStart}
