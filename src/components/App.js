@@ -26,10 +26,10 @@ function App(props) {
     // console.log(currentUser)
   }
 
-  function delCard(card){
-    let oldLane = currentUser.lanes.filter((l) => l.id === card.label)
-    let updatedLaneCards = oldLane.cards.filter((c) => c.id !== card.id)
-    
+  function delCard(user){
+    // let oldLane = currentUser.lanes.filter((l) => l.id === card.label)
+    // let updatedLaneCards = oldLane.cards.filter((c) => c.id !== card.id)
+    setCurrentUser(user)
   }
 
   function moveCard(user){
@@ -51,7 +51,7 @@ function App(props) {
         </Route>
         <Route exact path="/main">
           <NavBar></NavBar>
-          <MainPage addCard={addCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} setCurrentUser={setCurrentUser} ></MainPage>
+          <MainPage delCard={delCard} addCard={addCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} setCurrentUser={setCurrentUser} ></MainPage>
         </Route>
       </Switch>
     </div>

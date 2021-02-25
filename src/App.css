@@ -4,7 +4,7 @@
 
 .Modal {
   position: absolute;
-  
+
 }
 
 .Overlay {
@@ -13,7 +13,8 @@
   left: 30%;
   height: 50vh;
   width: 40vw;
-  background-color: ivory;
+  background-color: pink;
+  border-style: dotted;
 }
 
 .overall-board {

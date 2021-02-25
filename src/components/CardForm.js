@@ -7,6 +7,8 @@ function CardForm({addCard, currentUser, setCurrentUser}){
     const [modalIsOpen,setModalIsOpen] = useState(false);
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
+	const [search, setSearch] = useState("")
+
 
     function openModal() {
         setModalIsOpen((modalIsOpen)=>!modalIsOpen);
@@ -26,6 +28,8 @@ function CardForm({addCard, currentUser, setCurrentUser}){
 		}).then(r => r.json())
 		.then(user => {
 			addCard(user)
+			setTitle("")
+			setDescription("")
 			closeModal()
 		})
 		// setCurrentUser(currentUser)
@@ -35,11 +39,18 @@ function CardForm({addCard, currentUser, setCurrentUser}){
         <input type="text" name="description" placeholder="Enter Card Description" value={description} onChange={(e)=>setDescription(e.target.value)}></input><br></br>
         <input type="submit" value="Add Card"></input>
     </form>
+
+    function handleSearch(e){
+		setSearch(e.target.value)
+        let searchedCards = currentUser.cards.filter((c) => c.title.toLowerCase().includes(e.target.value.toLowerCase()))
+		
+	}
     
     return (
         <div>
             <button onClick={openModal}>Add Card</button>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Modal" className="formModal" overlayClassName="Overlay">
+			<input type="text" value={search} onChange={handleSearch}></input>
+            <Modal disableAutoFocus={true} isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Modal" className="formModal" overlayClassName="Overlay">
                 <button onClick={closeModal}>X</button>
                 <div>{form}</div>
             </Modal>
