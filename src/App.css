@@ -13,7 +13,7 @@
   left: 30%;
   height: 50vh;
   width: 40vw;
-  background-color: pink;
+  background-color: azure;
   border-style: dotted;
 }
 
@@ -47,4 +47,9 @@
 
 .searchbar {
   background-color: darkgrey;
+}
+
+.add-card-form {
+  display: flex;
+  justify-content: center;
 }

@@ -34,7 +34,7 @@ function CardForm({addCard, currentUser, setCurrentUser}){
 		})
 		// setCurrentUser(currentUser)
     }
-    const form = <form onSubmit={handleFormSubmit}>
+    const form = <form onSubmit={handleFormSubmit} className="add-card-form">
         <input type="text" name="title" placeholder="Enter Card Title" value={title} onChange={(e)=>setTitle(e.target.value)}></input><br></br>
         <input type="text" name="description" placeholder="Enter Card Description" value={description} onChange={(e)=>setDescription(e.target.value)}></input><br></br>
         <input type="submit" value="Add Card"></input>
