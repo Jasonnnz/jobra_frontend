@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root')
 
-function CardForm({addCard, currentUser, setCurrentUser}){
+function CardForm({addCard, currentUser, setCurrentUser, searchCard}){
     const [modalIsOpen,setModalIsOpen] = useState(false);
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -41,15 +41,21 @@ function CardForm({addCard, currentUser, setCurrentUser}){
     </form>
 
     function handleSearch(e){
-		setSearch(e.target.value)
-        let searchedCards = currentUser.cards.filter((c) => c.title.toLowerCase().includes(e.target.value.toLowerCase()))
-
+		// setSearch(e.target.value)
+        let searchedCards = currentUser.cards.filter((c) => c.title.toLowerCase().includes(search.toLowerCase()))
+        let updatedCards = searchedCards.map((c) => {
+            return {...c, label: "Searched"}
+        })
+        currentUser.lanes[4].cards = updatedCards
+        // console.log(searchedCards)
+        searchCard(currentUser)
 	}
     
     return (
         <div className="searchbar">
             <button onClick={openModal}>Add Card</button>
-			<input type="text" value={search} onChange={handleSearch} placeholder="Search..."></input>
+			<input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search..."></input>
+            <input type="submit" value="Search" onClick={handleSearch}></input>
             <Modal disableAutoFocus={true} isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Modal" className="formModal" overlayClassName="Overlay">
                 <button onClick={closeModal}>X</button>
                 <div>{form}</div>

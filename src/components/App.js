@@ -5,6 +5,7 @@ import { useState , useEffect} from 'react';
 import AuthForm from './AuthForm';
 import NavBar from './NavBar';
 import MainPage from './MainPage';
+import UserProfile from './UserProfile';
 
 function App(props) {
   const [ currentUser,setCurrentUser ] = useState({lanes:[]});
@@ -41,6 +42,13 @@ function App(props) {
 
     // eventBus.publish({type: 'MOVE_CARD', fromLaneId: sourceLaneId, toLaneId: targetLaneId, cardId: card.id, index: 0})
   }
+
+  function searchCard(currentUser){
+    console.log(currentUser)
+    // setCurrentUser(currentUser => currentUser.lanes[4].cards = searchedCards)
+    setCurrentUser(currentUser)
+    // console.log(currentUser)
+  }
   // console.log(currentUser.lanes[0])
   // console.log(eventBus)
   return (
@@ -50,8 +58,12 @@ function App(props) {
           <AuthForm history={props.history} setCurrentUser={setCurrentUser}></AuthForm>
         </Route>
         <Route exact path="/main">
-          <NavBar></NavBar>
-          <MainPage delCard={delCard} addCard={addCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} setCurrentUser={setCurrentUser} ></MainPage>
+          <NavBar history={props.history}></NavBar>
+          <MainPage searchCard={searchCard} delCard={delCard} addCard={addCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} setCurrentUser={setCurrentUser} ></MainPage>
+        </Route>
+        <Route exact path="/profile">
+          <NavBar history={props.history}></NavBar>
+          <UserProfile currentUser={currentUser}></UserProfile>
         </Route>
       </Switch>
     </div>
