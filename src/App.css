@@ -21,6 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-area: 1 / 1 / 2 / 2; 
 }
 
 .header {
@@ -52,4 +53,16 @@
 .add-card-form {
   display: flex;
   justify-content: center;
+}
+
+.mainpage {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.notes-section {
+  grid-area: 1 / 2 / 2 / 3; 
 }

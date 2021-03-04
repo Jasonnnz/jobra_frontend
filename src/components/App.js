@@ -8,7 +8,8 @@ import MainPage from './MainPage';
 import UserProfile from './UserProfile';
 
 function App(props) {
-  const [ currentUser,setCurrentUser ] = useState({lanes:[]});
+  const [currentUser, setCurrentUser] = useState({lanes:[]})
+  const [notes, setNotes] = useState([])
   const [eventBus, setEventBus] = useState(null)
 
   useEffect(()=>{
@@ -17,8 +18,28 @@ function App(props) {
       .then(loggedUser => {
           // console.log(loggedUser)
           setCurrentUser(loggedUser)
+          setNotes(loggedUser.notes)
       })
   },[])
+
+//   useEffect(()=>{
+//     fetch('http://localhost:3000/notes')
+//     .then(r => r.json())
+//     .then(notesArr => {
+//         // console.log(loggedUser)
+//         setNotes(notesArr)
+//     })
+// },[])
+
+  function addNote(note) {
+    setNotes([...notes, note])
+  }
+
+  function delNote(noteId){
+    let updatedNotes = notes.filter((n) => n.id !== parseInt(noteId))
+    console.log(noteId, updatedNotes)
+    setNotes(updatedNotes)
+  }
 
   function addCard(user){
     // let interestedLaneCards = currentUser.lanes[0].cards
@@ -44,7 +65,7 @@ function App(props) {
   }
 
   function searchCard(currentUser){
-    console.log(currentUser)
+    // console.log(currentUser)
     // setCurrentUser(currentUser => currentUser.lanes[4].cards = searchedCards)
     setCurrentUser(currentUser)
     // console.log(currentUser)
@@ -59,7 +80,7 @@ function App(props) {
         </Route>
         <Route exact path="/main">
           <NavBar history={props.history}></NavBar>
-          <MainPage searchCard={searchCard} delCard={delCard} addCard={addCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} setCurrentUser={setCurrentUser} ></MainPage>
+          <MainPage addNote={addNote} delNote={delNote} notes={notes} searchCard={searchCard} delCard={delCard} addCard={addCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} setCurrentUser={setCurrentUser} ></MainPage>
         </Route>
         <Route exact path="/profile">
           <NavBar history={props.history}></NavBar>
