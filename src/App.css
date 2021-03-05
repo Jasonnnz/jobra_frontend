@@ -24,6 +24,10 @@
   grid-area: 1 / 1 / 2 / 2; 
 }
 
+.entire-trello {
+  height:auto;
+  background-color: lightsteelblue;
+}
 .header {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -61,8 +65,34 @@
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  background-color: lightsteelblue;
 }
 
 .notes-section {
   grid-area: 1 / 2 / 2 / 3; 
+}
+
+.whole-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 100%;
+}
+
+.upper-section {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.lower-section {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+#line-graph {
+  height: 50vh;
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  margin-left: 25vw;
 }

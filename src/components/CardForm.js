@@ -1,21 +1,22 @@
 import {useState} from 'react';
-import Modal from 'react-modal';
+import { Button, Header, Segment, Modal, Form, Divider, Input } from 'semantic-ui-react'
+// import Modal from 'react-modal';
 
-Modal.setAppElement('#root')
+// Modal.setAppElement('#root')
 
 function CardForm({addCard, currentUser, setCurrentUser, searchCard, setSearchTerm}){
-    const [modalIsOpen,setModalIsOpen] = useState(false);
+    const [open,setOpen] = useState(false);
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
 	const [search, setSearch] = useState("")
 
 
-    function openModal() {
-        setModalIsOpen((modalIsOpen)=>!modalIsOpen);
-    }
-    function closeModal(){
-        setModalIsOpen((modalIsOpen)=>!modalIsOpen);
-    }
+    // function openModal() {
+    //     setModalIsOpen((modalIsOpen)=>true);
+    // }
+    // function closeModal(){
+    //     setModalIsOpen((modalIsOpen)=>false);
+    // }
     function handleFormSubmit(e){
         e.preventDefault();
         let newCard = {title: title, description: description, label: "Interested", user_id: currentUser.id}
@@ -29,14 +30,10 @@ function CardForm({addCard, currentUser, setCurrentUser, searchCard, setSearchTe
 			addCard(user)
 			setTitle("")
 			setDescription("")
-			closeModal()
+            setOpen(false)
 		})
     }
-    const form = <form onSubmit={handleFormSubmit} className="add-card-form">
-        <input type="text" name="title" placeholder="Enter Card Title" value={title} onChange={(e)=>setTitle(e.target.value)}></input><br></br>
-        <input type="text" name="description" placeholder="Enter Card Description" value={description} onChange={(e)=>setDescription(e.target.value)}></input><br></br>
-        <input type="submit" value="Add Card"></input>
-    </form>
+
     function handleSearch(e){
         setSearchTerm(search.toLowerCase())
         let searchedCards = currentUser.cards.filter((c) => c.title.toLowerCase().includes(search.toLowerCase()))
@@ -48,12 +45,19 @@ function CardForm({addCard, currentUser, setCurrentUser, searchCard, setSearchTe
 	}
     return (
         <div className="searchbar">
-            <button onClick={openModal}>Add Card</button>
-			<input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search..."></input>
-            <input type="submit" value="Search" onClick={handleSearch}></input>
-            <Modal disableAutoFocus={true} isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Modal" className="formModal" overlayClassName="Overlay">
-                <button onClick={closeModal}>X</button>
-                <div>{form}</div>
+			<Input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search..."></Input>
+            <Input type="submit" value="Search" onClick={handleSearch}></Input>
+            <Modal basic onClose={()=>setOpen(false)} onOpen={()=>setOpen(true)} open={open} size="small"
+            trigger={<Button basic color="black">New Card</Button>}>
+                <Segment inverted>
+                    <Header>Add New Card</Header>
+                    <Form onSubmit={handleFormSubmit} inverted>
+                        <Divider horiztonal></Divider>
+                        <Form.Input type="text" name="title" placeholder="Enter Card Title" value={title} onChange={(e)=>setTitle(e.target.value)}/>
+                        <Form.Input type="text" name="description" placeholder="Enter Card Description" value={description} onChange={(e)=>setDescription(e.target.value)}/>
+                        <Button type="submit">Add Card</Button>
+                    </Form>
+                </Segment>
             </Modal>
         </div>
     );

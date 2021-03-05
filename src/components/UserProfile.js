@@ -40,7 +40,7 @@ function UserProfile({currentUser}){
                 break
         }
     }
-    console.log(week1Count,week2Count,week3Count,week4Count)
+    // console.log(week1Count,week2Count,week3Count,week4Count)
     const lineData = {
         labels: ["02/28 - 03/06","03/07 - 03/13","03/14 - 03/20", "03/21 - 03/27"],
         datasets:[ {
@@ -67,7 +67,9 @@ function UserProfile({currentUser}){
                 }}
                 height='60%'
                 />
-                <Line data={lineData}/>
+                <div id = "line-graph">
+                    <Line data={lineData}/>
+                </div>
             </div>
         </div>
     );

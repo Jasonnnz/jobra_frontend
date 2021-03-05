@@ -6,6 +6,7 @@ import AuthForm from './AuthForm';
 import NavBar from './NavBar';
 import MainPage from './MainPage';
 import UserProfile from './UserProfile';
+import 'semantic-ui-css/semantic.min.css'
 
 function App(props) {
   const [currentUser, setCurrentUser] = useState({lanes:[]})
