@@ -1,4 +1,4 @@
-function NavBar({history}){
+function NavBar({history, handleLogOut}){
     return(
         <div className="header">
             <div className="jobra">
@@ -6,6 +6,9 @@ function NavBar({history}){
             </div>
             <div className="profile">
                 <h1 onClick={()=> history.push('/profile')}>Profile</h1>
+            </div>
+            <div className="logout">
+                <h1 onClick={()=> handleLogOut()}>Log Out</h1>
             </div>
         </div>
     );

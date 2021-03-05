@@ -1,4 +1,4 @@
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 import '../App.css';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { useState , useEffect} from 'react';
@@ -13,17 +13,29 @@ function App(props) {
   const [notes, setNotes] = useState([])
   const [eventBus, setEventBus] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
-  // console.log("BINGO", searchTerm)
 
   useEffect(()=>{
-      fetch('http://localhost:3000/me')
-      .then(r => r.json())
-      .then(loggedUser => {
-          // console.log(loggedUser)
-          setCurrentUser(loggedUser)
-          setNotes(loggedUser.notes)
-      })
+    const token = localStorage.getItem("token");
+      if (token) {
+        fetch('http://localhost:3000/me',{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(r => r.json())
+        .then(loggedUser => {
+            // console.log(loggedUser)
+            setCurrentUser(loggedUser)
+            setNotes(loggedUser.notes)
+        })
+      }
   },[])
+
+  function handleLogOut(){
+    localStorage.removeItem("token")
+    setCurrentUser({lanes:[]});
+    props.history.push('/');
+  }
 
   function addNote(note) {
     setNotes([...notes, note])
@@ -31,7 +43,7 @@ function App(props) {
 
   function delNote(noteId){
     let updatedNotes = notes.filter((n) => n.id !== parseInt(noteId))
-    console.log(noteId, updatedNotes)
+    // console.log(noteId, updatedNotes)
     setNotes(updatedNotes)
   }
 
@@ -72,14 +84,14 @@ function App(props) {
         <Route exact path="/">
           <AuthForm history={props.history} setCurrentUser={setCurrentUser}></AuthForm>
         </Route>
-        <Route exact path="/main">
-          <NavBar history={props.history}></NavBar>
+        {currentUser.lanes.length > 0 ? <Route exact path="/main">
+          <NavBar history={props.history} handleLogOut={handleLogOut}></NavBar>
           <MainPage setSearchTerm={setSearchTerm} addNote={addNote} delNote={delNote} notes={notes} searchCard={searchCard} delCard={delCard} addCard={addCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} setCurrentUser={setCurrentUser} ></MainPage>
-        </Route>
-        <Route exact path="/profile">
-          <NavBar history={props.history}></NavBar>
+        </Route> : null}
+        {currentUser.lanes.length > 0 ? <Route exact path="/profile">
+          <NavBar history={props.history} handleLogOut={handleLogOut}></NavBar>
           <UserProfile currentUser={currentUser}></UserProfile>
-        </Route>
+        </Route> : null}
       </Switch>
     </div>
   );

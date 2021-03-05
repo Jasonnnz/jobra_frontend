@@ -4,6 +4,7 @@ function Signup({loginForm, setLoginForm, setCurrentUser, history}){
     const [ email, setEmail] = useState("")
     const [ name, setName] = useState("")
     const [ password, setPassword] = useState("")
+    const [errors, setErrors] = useState([])
 
     function handleSignup(e){
         e.preventDefault()
@@ -12,19 +13,34 @@ function Signup({loginForm, setLoginForm, setCurrentUser, history}){
             name: name,
             password: password
         }
-        fetch('http://localhost:3000/me')
+        fetch('http://localhost:3000/signup',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        })
         .then(r => r.json())
         .then(user => {
-            setCurrentUser(user)
-            history.push('/main')
+            if (newUser.errors){
+                setErrors(newUser.errors)
+            } else {
+                const { user, token } = newUser;
+                localStorage.setItem("token", token);
+                setCurrentUser(user);
+                history.push('/main')
+            }
         })
     }
 
     return (
         <form onSubmit={handleSignup}>
-            <input type="text" name="name" value={name} onChange={(e)=>setName(e.target.value)} placeholder="Enter Name"/>
-            <input type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter Email"/>
-            <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password"/>
+            <input type="text" name="name" value={name} onChange={(e)=>setName(e.target.value)} placeholder="Enter Name"/><br></br><br></br>
+            <input type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter Email"/><br></br><br></br>
+            <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password"/><br></br><br></br>
+            {errors.map((error) => {
+                return <p key={error}>{error}</p>;
+            })}
             <input type="submit" value="Signup"/>
             <p>Have an account? <span onClick={()=>setLoginForm(!loginForm)}>Login</span></p>
         </form>

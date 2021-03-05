@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
 function Login({loginForm, setLoginForm, setCurrentUser, history}){
-    const [ email, setEmail] = useState("")
-    const [ password, setPassword] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [errors, setErrors] = useState([])
 
     function handleLogin(e){
         e.preventDefault()
@@ -18,17 +19,26 @@ function Login({loginForm, setLoginForm, setCurrentUser, history}){
             body: JSON.stringify(loginUser),
           })
         .then(r => r.json())
-        .then(user => {
-            setCurrentUser(user)
-            history.push('/main')
+        .then((loggedUser) => {
+            if (loggedUser.errors){
+                setErrors(loggedUser.errors)
+            } else {
+                const { user, token } = loggedUser;
+                localStorage.setItem("token", token);
+                setCurrentUser(user);
+                history.push('/main')
+            }
         })
 
     }
 
     return (
-        <form onSubmit={handleLogin}>
-            <input type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter Email"/>
-            <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password"/>
+        <form onSubmit={handleLogin} autoComplete="off">
+            <input type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter Email"/><br></br><br></br>
+            <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password"/><br></br><br></br>
+            {errors.map((error) => {
+                return <p key={error}>{error}</p>;
+            })}
             <input type="submit" value="Login"/>
             <p>Don't have an account? <span onClick={()=>setLoginForm(!loginForm)}>Sign up</span></p>
         </form>
