@@ -11,6 +11,8 @@ function App(props) {
   const [currentUser, setCurrentUser] = useState({lanes:[]})
   const [notes, setNotes] = useState([])
   const [eventBus, setEventBus] = useState(null)
+  const [searchTerm, setSearchTerm] = useState('')
+  // console.log("BINGO", searchTerm)
 
   useEffect(()=>{
       fetch('http://localhost:3000/me')
@@ -21,15 +23,6 @@ function App(props) {
           setNotes(loggedUser.notes)
       })
   },[])
-
-//   useEffect(()=>{
-//     fetch('http://localhost:3000/notes')
-//     .then(r => r.json())
-//     .then(notesArr => {
-//         // console.log(loggedUser)
-//         setNotes(notesArr)
-//     })
-// },[])
 
   function addNote(note) {
     setNotes([...notes, note])
@@ -80,7 +73,7 @@ function App(props) {
         </Route>
         <Route exact path="/main">
           <NavBar history={props.history}></NavBar>
-          <MainPage addNote={addNote} delNote={delNote} notes={notes} searchCard={searchCard} delCard={delCard} addCard={addCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} setCurrentUser={setCurrentUser} ></MainPage>
+          <MainPage setSearchTerm={setSearchTerm} addNote={addNote} delNote={delNote} notes={notes} searchCard={searchCard} delCard={delCard} addCard={addCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} setCurrentUser={setCurrentUser} ></MainPage>
         </Route>
         <Route exact path="/profile">
           <NavBar history={props.history}></NavBar>

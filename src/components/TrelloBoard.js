@@ -32,14 +32,12 @@ function TrelloBoard({currentUser, setEventBus, eventBus, moveCard, delCard}){
         })
     }
 
+    // before we pass lanes to Board on line 38 we want to filter lanes
     return(
         <div> 
             <Board data={{lanes: currentUser.lanes}} className="overall-board"
             style={{backgroundColor: "lightsteelblue"}}
             laneStyle={{backgroundColor: "lightpink"}}
-            // draggable 
-            // editable
-            // onSubmit={handleDataChange} // MAKE ONCARDCLICK INSTEAD
             handleDragEnd={handleDragEnd}
             eventBusHandle={handleEventBus}
             onCardDelete={handleCardDelete}

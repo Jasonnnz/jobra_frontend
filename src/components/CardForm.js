@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root')
 
-function CardForm({addCard, currentUser, setCurrentUser, searchCard}){
+function CardForm({addCard, currentUser, setCurrentUser, searchCard, setSearchTerm}){
     const [modalIsOpen,setModalIsOpen] = useState(false);
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -13,7 +13,6 @@ function CardForm({addCard, currentUser, setCurrentUser, searchCard}){
     function openModal() {
         setModalIsOpen((modalIsOpen)=>!modalIsOpen);
     }
-
     function closeModal(){
         setModalIsOpen((modalIsOpen)=>!modalIsOpen);
     }
@@ -32,25 +31,21 @@ function CardForm({addCard, currentUser, setCurrentUser, searchCard}){
 			setDescription("")
 			closeModal()
 		})
-		// setCurrentUser(currentUser)
     }
     const form = <form onSubmit={handleFormSubmit} className="add-card-form">
         <input type="text" name="title" placeholder="Enter Card Title" value={title} onChange={(e)=>setTitle(e.target.value)}></input><br></br>
         <input type="text" name="description" placeholder="Enter Card Description" value={description} onChange={(e)=>setDescription(e.target.value)}></input><br></br>
         <input type="submit" value="Add Card"></input>
     </form>
-
     function handleSearch(e){
-		// setSearch(e.target.value)
+        setSearchTerm(search.toLowerCase())
         let searchedCards = currentUser.cards.filter((c) => c.title.toLowerCase().includes(search.toLowerCase()))
         let updatedCards = searchedCards.map((c) => {
             return {...c, label: "Searched"}
         })
         currentUser.lanes[4].cards = updatedCards
-        // console.log(searchedCards)
         searchCard(currentUser)
 	}
-    
     return (
         <div className="searchbar">
             <button onClick={openModal}>Add Card</button>
