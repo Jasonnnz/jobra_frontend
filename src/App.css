@@ -119,7 +119,8 @@
 
 .lower-section {
   grid-area: 2 / 1 / 3 / 2;
-  margin: 90px 0px;
+  margin: 70px 0px;
+  /* position: relative; */
 }
 
 #main-page-pie {
@@ -244,9 +245,19 @@
   margin: 10px 0px;
   width: 600px;
   height: 50px;
-  padding-left: 250px;
+  text-align: center;
+  position: relative;
 }
 
 .each-del-btn {
-  margin-left: 200px;
+  /* margin-left: 200px; */
+  display: inline-block; 
+  position: absolute;
+  right: 10px;
+}
+
+.note-description {
+  margin: 0;
+  border: 0;
+  display: inline-block;
 }

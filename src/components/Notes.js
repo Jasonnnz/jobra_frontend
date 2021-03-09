@@ -18,7 +18,7 @@ function Notes({notes, addNote, delNote, currentUser}){
 
     const allNotes = notes.map((n) => {
         return <div className="each-note" key={n.id} style={{backgroundColor: n.color, opacity: 0.8, color: "whitesmoke"}}>
-            {n.description}
+            <p className="note-description">{n.description}</p>
                 <button className="each-del-btn"style={{position: "right"}} id={n.id} onClick={(e) => handleDel(e)}>X</button>
             {/* <div className="each-note-del">
             </div> */}
