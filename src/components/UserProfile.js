@@ -53,7 +53,7 @@ function UserProfile({currentUser}){
     }
 
     return (
-        <div>
+        <div className="whole-user-page">
             <div className="current-user-info">
                 <h1>{currentUser.name}</h1>
                 <h2>{currentUser.email}</h2>

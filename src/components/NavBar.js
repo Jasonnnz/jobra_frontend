@@ -31,7 +31,6 @@ function NavBar({history, handleLogOut}){
         //         <h1 onClick={()=> handleLogOut()}>Log Out</h1>
         //     </div>
         // </div>
-        
 
         <Menu id="ui-header">
             <Menu.Item

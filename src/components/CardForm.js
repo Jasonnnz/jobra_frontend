@@ -45,10 +45,12 @@ function CardForm({addCard, currentUser, setCurrentUser, searchCard, setSearchTe
 	}
     return (
         <div className="searchbar">
-			<Input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search..."></Input>
-            <Input type="submit" value="Search" onClick={handleSearch}></Input>
+            <div>
+                <Input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search..."></Input>
+                <Input type="submit" value="Search" onClick={handleSearch}></Input>
+            </div>
             <Modal basic onClose={()=>setOpen(false)} onOpen={()=>setOpen(true)} open={open} size="small"
-            trigger={<Button basic color="black">New Card</Button>}>
+            trigger={<Button color="lightgrey">New Card</Button>}>
                 <Segment inverted>
                     <Header>Add New Card</Header>
                     <Form onSubmit={handleFormSubmit} inverted>

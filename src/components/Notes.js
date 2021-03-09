@@ -58,6 +58,15 @@ function Notes({notes, addNote, delNote, currentUser}){
     return(
         <div className="notes-section">
             <div className="whole-section">
+                <div className="upper-section">
+                    <Pie 
+                    data={{
+                        labels: data.labels,
+                        datasets: data.datasets
+                    }}
+                    height='200px'
+                    />
+                </div>
                 <div className="lower-section">
                     <h1>Notes</h1>
                     <div className="note-form">
@@ -73,15 +82,6 @@ function Notes({notes, addNote, delNote, currentUser}){
                         </form>
                     </div>
                     {notes.length === 0 ? <h1>No Notes</h1> : allNotes}
-                </div>
-                <div className="upper-section">
-                <Pie 
-                data={{
-                    labels: data.labels,
-                    datasets: data.datasets
-                }}
-                height='250px'
-                />
                 </div>
             </div>
         </div>
