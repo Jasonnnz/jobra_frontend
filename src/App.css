@@ -28,7 +28,8 @@
   height:auto;
   background-color: lightsteelblue;
 }
-.header {
+
+/* .header {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
@@ -55,7 +56,7 @@
   float: right;
   padding-right: 25px;
   justify-content: flex-end;
-}
+} */
 
 .searchbar {
   background-color: darkgrey;
@@ -102,4 +103,13 @@
   display: flex;
   justify-content: center;
   margin-left: 25vw;
+}
+
+.item {
+  font-size: x-large;
+}
+
+#ui-header {
+  margin-bottom: 0;
+  border: 0;
 }
