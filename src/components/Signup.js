@@ -34,15 +34,16 @@ function Signup({loginForm, setLoginForm, setCurrentUser, history}){
     }
 
     return (
-        <form onSubmit={handleSignup}>
+        <form onSubmit={handleSignup} className="login-form">
+            <label className="auth-label" style={{color: "whitesmoke"}}>Sign Up</label><br></br><br></br>
             <input type="text" name="name" value={name} onChange={(e)=>setName(e.target.value)} placeholder="Enter Name"/><br></br><br></br>
             <input type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter Email"/><br></br><br></br>
             <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password"/><br></br><br></br>
             {errors.map((error) => {
                 return <p key={error}>{error}</p>;
             })}
-            <input type="submit" value="Signup"/>
-            <p>Have an account? <span onClick={()=>setLoginForm(!loginForm)}>Login</span></p>
+            <input type="submit" value="Signup"/><br></br><br></br>
+            <p style={{color: "whitesmoke"}}>Have an account? <span onClick={()=>setLoginForm(!loginForm)}>Login</span></p>
         </form>
     );
 }

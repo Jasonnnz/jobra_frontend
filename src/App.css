@@ -1,3 +1,8 @@
+.html {
+  width: 100vw;
+  height: 100vh;
+}
+
 .App {
   text-align: center;
   height: 100vh;
@@ -31,6 +36,17 @@
   background-color: lightsteelblue;
 }
 
+.react-trello-lane {
+  box-shadow: 0px 8px 8px 8px rgba(0,0,0,0.2);
+}
+
+.sc-kEjbxe {
+  color: whitesmoke;
+}
+
+.sc-kstrdz {
+  color: black;
+}
 /* .header {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -84,7 +100,7 @@
 
 .notes-section {
   grid-area: 1 / 2 / 2 / 3; 
-  background-color: whitesmoke;
+  background-color: rgba(153, 221, 255, 0.637);
 }
 
 .whole-section {
@@ -93,17 +109,24 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  height: 100%;
+  height: max-content;
 }
 
 .upper-section {
   grid-area: 1 / 1 / 2 / 2;
-  display: flex;
-  justify-content: center;
+  height: 30vh;
 }
 
 .lower-section {
   grid-area: 2 / 1 / 3 / 2;
+  margin: 90px 0px;
+}
+
+#main-page-pie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px;
 }
 
 #line-graph {
@@ -111,7 +134,8 @@
   width: 50vw;
   display: flex;
   justify-content: center;
-  margin-left: 25vw;
+  background-color: whitesmoke;
+  margin: 0;
 }
 
 .item {
@@ -121,4 +145,108 @@
 #ui-header {
   margin-bottom: 0;
   border: 0;
+  display: flex;
+}
+
+.slogan {
+  padding-right: 730px;
+  padding-top: 15px;
+  font-size: x-large;
+  color: grey;
+  font-style: italic;
+}
+
+.logout-btn {
+  margin-left: 0px;
+}
+
+.jobra-logo {
+  margin-left: 750px;
+  height: 50px;
+  width: 50px;
+  /* padding-left: 10px; */
+}
+
+.authform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(153, 221, 255);
+}
+
+.login-form {
+  padding: 50px;
+  border: solid black 4px;
+  background-color:rgb(82, 137, 165);
+  border-radius: 15px;
+}
+
+.auth-label{
+  font-size: xx-large;
+}
+
+.whole-user-page {
+  background-color: rgb(125, 178, 204);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 100vh;
+  width: 100vw;
+}
+
+.current-user-info {
+  grid-area: 1 / 1 / 2 / 3;
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-user-charts {
+  grid-area: 2 / 1 / 3 / 2;
+  width: 100vw;
+}
+
+.profile-info {
+  border: solid white 4px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 40vw;
+  margin: 0;
+}
+
+.pie-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-note-form {
+  border: solid black 5px;
+  border-radius: 5px;
+  color: black;
+}
+
+.each-note {
+  /* border-left: 50px; */
+  margin: 10px 0px;
+  width: 600px;
+  height: 50px;
+  padding-left: 250px;
+}
+
+.each-del-btn {
+  margin-left: 200px;
 }

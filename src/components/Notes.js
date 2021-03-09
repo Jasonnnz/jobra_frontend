@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {Pie} from 'react-chartjs-2';
+import {Header} from 'semantic-ui-react';
 
 function Notes({notes, addNote, delNote, currentUser}){
     const [desc, setDesc] = useState("")
@@ -11,16 +12,16 @@ function Notes({notes, addNote, delNote, currentUser}){
                  currentUser.lanes[1].cards.length,
                  currentUser.lanes[2].cards.length,
                  currentUser.lanes[3].cards.length],
-            backgroundColor: ["blue","yellow","green","red"]
+            backgroundColor: ["moccasin","mediumslateblue","palegreen","crimson"]
         }]
     }
 
     const allNotes = notes.map((n) => {
-        return <div className="each-note" key={n.id} style={{backgroundColor: n.color, opacity: 0.8, color: "white"}}>
+        return <div className="each-note" key={n.id} style={{backgroundColor: n.color, opacity: 0.8, color: "whitesmoke"}}>
             {n.description}
-            <div className="each-note-del">
-                <button id={n.id} onClick={(e) => handleDel(e)}>X</button>
-            </div>
+                <button className="each-del-btn"style={{position: "right"}} id={n.id} onClick={(e) => handleDel(e)}>X</button>
+            {/* <div className="each-note-del">
+            </div> */}
         </div>
     })
 
@@ -59,7 +60,7 @@ function Notes({notes, addNote, delNote, currentUser}){
         <div className="notes-section">
             <div className="whole-section">
                 <div className="upper-section">
-                    <Pie 
+                    <Pie id="main-page-pie"
                     data={{
                         labels: data.labels,
                         datasets: data.datasets
@@ -68,9 +69,9 @@ function Notes({notes, addNote, delNote, currentUser}){
                     />
                 </div>
                 <div className="lower-section">
-                    <h1>Notes</h1>
+                    <Header dividing>Notes</Header>
                     <div className="note-form">
-                        <form>
+                        <form className="new-note-form">
                             <label htmlFor="description">Add New Note</label><br></br>
                             <input type="text" name="description" value={desc} onChange={(e)=>setDesc(e.target.value)} placeholder="Type note here"/><br></br>
                             <label htmlFor="color">Select Color</label>            

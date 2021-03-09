@@ -33,14 +33,15 @@ function Login({loginForm, setLoginForm, setCurrentUser, history}){
     }
 
     return (
-        <form onSubmit={handleLogin} autoComplete="off">
+        <form onSubmit={handleLogin} autoComplete="off" className="login-form">
+            <label className="auth-label" style={{color: "whitesmoke"}}>Login</label><br></br><br></br>
             <input type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter Email"/><br></br><br></br>
             <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password"/><br></br><br></br>
             {errors.map((error) => {
                 return <p key={error}>{error}</p>;
             })}
-            <input type="submit" value="Login"/>
-            <p>Don't have an account? <span onClick={()=>setLoginForm(!loginForm)}>Sign up</span></p>
+            <input type="submit" value="Login"/><br></br><br></br>
+            <p style={{color: "whitesmoke"}}>Don't have an account? <span onClick={()=>setLoginForm(!loginForm)}>Sign up</span></p>
         </form>
     );
 }

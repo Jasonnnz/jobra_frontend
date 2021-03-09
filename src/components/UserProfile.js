@@ -12,7 +12,7 @@ function UserProfile({currentUser}){
                  currentUser.lanes[1].cards.length,
                  currentUser.lanes[2].cards.length,
                  currentUser.lanes[3].cards.length],
-            backgroundColor: ["blue","yellow","green","red"]
+            backgroundColor: ["moccasin","mediumslateblue","palegreen","crimson"]
         }]
     })
 
@@ -55,20 +55,23 @@ function UserProfile({currentUser}){
     return (
         <div className="whole-user-page">
             <div className="current-user-info">
-                <h1>{currentUser.name}</h1>
-                <h2>{currentUser.email}</h2>
+                <div className="profile-info">
+                    <h1>{currentUser.name}</h1>
+                    <h2>{currentUser.email}</h2>
+                </div>
             </div>
             <div className="current-user-charts">
-                Charts
-                <Pie 
-                data={{
-                    labels: data.labels,
-                    datasets: data.datasets
-                }}
-                height='60%'
-                />
-                <div id = "line-graph">
-                    <Line data={lineData}/>
+                <div className="charts">
+                    <Pie className="pie-chart"
+                    data={{
+                        labels: data.labels,
+                        datasets: data.datasets
+                    }}
+                    height='100%'
+                    />
+                    <div id ="line-graph">
+                        <Line data={lineData} style={{borderColor:"black"}}/>
+                    </div>
                 </div>
             </div>
         </div>

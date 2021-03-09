@@ -43,12 +43,9 @@ function CardForm({addCard, currentUser, setCurrentUser, searchCard, setSearchTe
         currentUser.lanes[4].cards = updatedCards
         searchCard(currentUser)
 	}
+
     return (
         <div className="searchbar">
-            <div>
-                <Input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search..."></Input>
-                <Input type="submit" value="Search" onClick={handleSearch}></Input>
-            </div>
             <Modal basic onClose={()=>setOpen(false)} onOpen={()=>setOpen(true)} open={open} size="small"
             trigger={<Button color="lightgrey">New Card</Button>}>
                 <Segment inverted>
@@ -61,6 +58,10 @@ function CardForm({addCard, currentUser, setCurrentUser, searchCard, setSearchTe
                     </Form>
                 </Segment>
             </Modal>
+            <div>
+                <Input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search..."></Input>
+                <Input type="submit" value="Search" onClick={handleSearch}></Input>
+            </div>
         </div>
     );
 }

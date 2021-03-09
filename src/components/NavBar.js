@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {Menu} from 'semantic-ui-react'
+import logo from '../images/jobra_logo.png'
 
 function NavBar({history, handleLogOut}){
     const [activeItem, setActiveItem] = useState("")
@@ -38,7 +39,7 @@ function NavBar({history, handleLogOut}){
             active={activeItem === 'jobra'}
             onClick={handleJobraClick}
             >
-            Jobra
+            Home
             </Menu.Item>
             <Menu.Item
             name='profile'
@@ -47,8 +48,9 @@ function NavBar({history, handleLogOut}){
             >
             Profile
             </Menu.Item>
-
-            <Menu.Menu position='right'>
+            <img src={logo} className="jobra-logo" alt="Jobra Logo"/>
+            <span className="slogan">"Keeping your career on track!"</span>
+            <Menu.Menu className="logout-btn">
                 <Menu.Item
                 name='logout'
                 active={activeItem === 'logout'}
