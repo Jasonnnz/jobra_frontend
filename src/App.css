@@ -46,34 +46,6 @@
 .sc-kstrdz {
   color: black;
 }
-/* .header {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-
-.jobra {
-  display: flex;
-  float: left;
-  padding-left: 25px;
-  justify-content: flex-start;
-}
-
-.profile {
-  display: flex;
-  float: right;
-  padding-right: 25px;
-  justify-content: flex-end;
-}
-
-.logout {
-  display: flex;
-  float: right;
-  padding-right: 25px;
-  justify-content: flex-end;
-} */
 
 .searchbar {
   background-color: black;
@@ -243,7 +215,7 @@
 .each-note {
   /* border-left: 50px; */
   margin: 10px 0px;
-  width: 600px;
+  /* width: 600px; */
   height: 50px;
   text-align: center;
   position: relative;

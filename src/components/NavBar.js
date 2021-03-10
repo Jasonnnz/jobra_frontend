@@ -50,7 +50,7 @@ function NavBar({history, handleLogOut}){
             </Menu.Item>
             <img src={logo} className="jobra-logo" alt="Jobra Logo"/>
             <span className="slogan">"Keeping your career on track!"</span>
-            <Menu.Menu className="logout-btn">
+            <Menu.Menu className="logout-btn" position="right">
                 <Menu.Item
                 name='logout'
                 active={activeItem === 'logout'}
