@@ -33,7 +33,7 @@ function NavBar({history, handleLogOut}){
         //     </div>
         // </div>
 
-        <Menu id="ui-header">
+        <Menu borderless id="ui-header">
             <Menu.Item
             name='jobra'
             active={activeItem === 'jobra'}
