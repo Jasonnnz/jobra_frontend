@@ -71,7 +71,7 @@ function Notes({notes, addNote, delNote, currentUser}){
                 <div className="lower-section">
                     <Header dividing>Notes</Header>
                     <div className="note-form">
-                        <form className="new-note-form">
+                        <form className="new-note-form" style={{padding: "10px"}}>
                             <label htmlFor="description">Add New Note</label><br></br>
                             <input type="text" name="description" value={desc} onChange={(e)=>setDesc(e.target.value)} placeholder="Type note here"/><br></br>
                             <label htmlFor="color">Select Color</label>            

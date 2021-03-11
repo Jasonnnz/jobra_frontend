@@ -62,7 +62,7 @@ function UserProfile({currentUser}){
             </div>
             <div className="current-user-charts">
                 <div className="charts">
-                    <Pie className="pie-chart"
+                    <Pie className="pie-chart" 
                     data={{
                         labels: data.labels,
                         datasets: data.datasets
