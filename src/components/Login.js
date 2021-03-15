@@ -34,14 +34,14 @@ function Login({loginForm, setLoginForm, setCurrentUser, history}){
 
     return (
         <form onSubmit={handleLogin} autoComplete="off" className="login-form">
-            <label className="auth-label" style={{color: "whitesmoke"}}>Login</label><br></br><br></br>
-            <input type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter Email"/><br></br><br></br>
-            <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password"/><br></br><br></br>
+            <label className="auth-label" style={{color: "black"}}>Log in to Jobra</label><br></br><br></br>
+            <input className="auth-input" type="text" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter Email"/><br></br><br></br>
+            <input className="auth-input" type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password"/><br></br><br></br>
             {errors.map((error) => {
-                return <p key={error}>{error}</p>;
+                return <p className="login-error" key={error}>{error}</p>;
             })}
-            <input type="submit" value="Login"/><br></br><br></br>
-            <p style={{color: "whitesmoke"}}>Don't have an account? <span onClick={()=>setLoginForm(!loginForm)}>Sign up</span></p>
+            <input className="login-btn" type="submit" value="Log in"/><br></br><br></br>
+            <p className="login-bottom" style={{color: "black"}}>Don't have an account? <span className="signup-toggle"onClick={()=>setLoginForm(!loginForm)}>Sign up</span></p>
         </form>
     );
 }

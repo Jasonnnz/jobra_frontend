@@ -24,7 +24,6 @@ function App(props) {
         })
         .then(r => r.json())
         .then(loggedUser => {
-            // console.log(loggedUser)
             setCurrentUser(loggedUser)
             setNotes(loggedUser.notes)
         })
@@ -76,8 +75,7 @@ function App(props) {
     setCurrentUser(currentUser)
     // console.log(currentUser)
   }
-  // console.log(currentUser.lanes[0])
-  // console.log(eventBus)
+
   return (
     <div className="App">
       <Switch>
