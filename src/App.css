@@ -268,3 +268,92 @@
 .login-bottom{
   text-align: center;
 }
+
+.header-mainpage{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: .05fr repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-area: 1 / 1 / 4 / 3;
+}
+#ui-header{
+  grid-area: 1 / 1 / 2 / 3;
+  align-items: center;
+  margin: 0px;
+}
+.searchbar-mainpage{
+  grid-area: 2 / 1 / 4 / 3;
+}
+.searchbar{
+  display: flex;
+  margin: 5px 10px;
+}
+.main-page{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-area: 1 / 1 / 3 / 3;
+  display: flex;
+  width: 100%;
+}
+.entire-trello{
+  grid-area: 1 / 1 / 3 / 2;
+  display: flex;
+  max-width: 80%;
+  border-right: 1px solid lightgrey;
+}
+.notes-section{
+  grid-area: 1 / 2 / 3 / 3;
+  display: flex;
+  justify-content: flex-start;
+  width: 20%;
+}
+.sc-jrAGrp.dEGcOO{
+  min-width: 230px;
+}
+.lower-section{
+  margin-top: 25px;
+}
+.notes-header{
+  text-align: center;
+}
+.note-form{
+  text-align: center;
+}
+.each-note{
+  margin: 10px 35px;
+  border-radius: 3px;
+}
+.note-description{
+  padding: 5px;
+}
+.jobra-logo{
+  margin: 10px;
+}
+.whole-user-page{
+  padding: 15px;
+}
+.profile-info{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+.charts{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding-top: 25px;
+}
+.pie-chart{
+  grid-area: 1 / 1 / 2 / 2;
+  height: 300px;
+  width: 700px;
+}
+#line-graph{
+  grid-area: 1 / 2 / 2 / 3;
+}

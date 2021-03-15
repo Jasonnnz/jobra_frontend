@@ -58,7 +58,7 @@ function CardForm({addCard, currentUser, setCurrentUser, searchCard, setSearchTe
                     </Form>
                 </Segment>
             </Modal>
-            <div>
+            <div className="search-input">
                 <Input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search..."></Input>
                 <Input type="submit" value="Search" onClick={handleSearch}></Input>
             </div>

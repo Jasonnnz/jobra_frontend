@@ -36,9 +36,9 @@ function TrelloBoard({currentUser, setEventBus, eventBus, moveCard, delCard}){
         <div className="entire-trello"> 
             <Board data={{lanes: currentUser.lanes}} 
             className="overall-board"
-            style={{backgroundColor: "rgb(153, 221, 255)"}}
+            style={{backgroundColor: "white", backgroundImage: 'url("https://media.istockphoto.com/vectors/abstract-white-background-geometric-texture-vector-id1069183510?k=6&m=1069183510&s=612x612&w=0&h=IsR2U2IjDpCVAyY6oeeANwvIP1SHpBalMZPB_QNGnbw=")'}}
             cardStyle={{backgroundColor: "whitesmoke"}}
-            laneStyle={{backgroundColor: "rgb(82, 137, 165)"}}
+            laneStyle={{backgroundColor: "lightgrey", minWidth:"187px"}}
             handleDragEnd={handleDragEnd}
             eventBusHandle={handleEventBus}
             onCardDelete={handleCardDelete}

@@ -6,9 +6,9 @@ import Notes from './Notes';
 function MainPage({setSearchTerm, notes, addNote, delNote, currentUser, setEventBus, eventBus, moveCard, addCard, setCurrentUser, delCard, searchCard}){
 
     return (
-        <div>
+        <div className="searchbar-mainpage">
             <CardForm setSearchTerm={setSearchTerm} searchCard={searchCard} setCurrentUser={setCurrentUser} currentUser={currentUser} addCard={addCard}></CardForm>
-            <div className="mainpage">
+            <div className="main-page">
                 <TrelloBoard delCard={delCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} ></TrelloBoard>
                 <Notes currentUser={currentUser} notes={notes} addNote={addNote} delNote={delNote} ></Notes>
             </div>

@@ -83,9 +83,10 @@ function App(props) {
           <AuthForm history={props.history} setCurrentUser={setCurrentUser}></AuthForm>
         </Route>
         {currentUser.lanes.length > 0 ? <Route exact path="/main">
+          <div className="header-mainpage">
           <NavBar history={props.history} handleLogOut={handleLogOut}></NavBar>
           <MainPage setSearchTerm={setSearchTerm} addNote={addNote} delNote={delNote} notes={notes} searchCard={searchCard} delCard={delCard} addCard={addCard} moveCard={moveCard} eventBus={eventBus} setEventBus={setEventBus} currentUser={currentUser} setCurrentUser={setCurrentUser} ></MainPage>
-        </Route> : null}
+          </div></Route> : null}
         {currentUser.lanes.length > 0 ? <Route exact path="/profile">
           <NavBar history={props.history} handleLogOut={handleLogOut}></NavBar>
           <UserProfile currentUser={currentUser}></UserProfile>

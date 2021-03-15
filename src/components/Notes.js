@@ -4,7 +4,7 @@ import {Header} from 'semantic-ui-react';
 
 function Notes({notes, addNote, delNote, currentUser}){
     const [desc, setDesc] = useState("")
-    const [color, setColor] = useState("blue")
+    const [color, setColor] = useState("lightblue")
     let data = {
         labels: ["Interested","Applied", "Accepted", "Rejected"],
         datasets: [{
@@ -12,7 +12,7 @@ function Notes({notes, addNote, delNote, currentUser}){
                  currentUser.lanes[1].cards.length,
                  currentUser.lanes[2].cards.length,
                  currentUser.lanes[3].cards.length],
-            backgroundColor: ["moccasin","mediumslateblue","palegreen","crimson"]
+            backgroundColor: ["yellow","lightblue","lightgreen","red"]
         }]
     }
 
@@ -20,8 +20,6 @@ function Notes({notes, addNote, delNote, currentUser}){
         return <div className="each-note" key={n.id} style={{backgroundColor: n.color, opacity: 0.8, color: "whitesmoke"}}>
             <p className="note-description" style={{color:"black"}}>{n.description}</p>
                 <button className="each-del-btn"style={{position: "right"}} id={n.id} onClick={(e) => handleDel(e)}>X</button>
-            {/* <div className="each-note-del">
-            </div> */}
         </div>
     })
 
@@ -69,20 +67,21 @@ function Notes({notes, addNote, delNote, currentUser}){
                     />
                 </div>
                 <div className="lower-section">
-                    <Header dividing>Notes</Header>
+                    <Header dividing></Header>
+                    <Header className="notes-header">Notes</Header>
                     <div className="note-form">
-                        <form className="new-note-form" style={{padding: "10px"}}>
+                        <form className="new-note-form">
                             <label htmlFor="description">Add New Note</label><br></br>
-                            <input type="text" name="description" value={desc} onChange={(e)=>setDesc(e.target.value)} placeholder="Type note here"/><br></br>
-                            <label htmlFor="color">Select Color</label>            
-                            <input type="radio" id="Blue" name="color" value="Blue" onClick={(e)=>setColor(e.target.value.toLowerCase())} checked={color === "blue" ? "checked" : "" }/>Blue
+                            <input type="text" name="description" value={desc} onChange={(e)=>setDesc(e.target.value)} placeholder="Type note here"/><br></br><br></br>
+                            <label htmlFor="color">Select Color</label><br></br>            
+                            <input type="radio" id="Blue" name="color" value="LightBlue" onClick={(e)=>setColor(e.target.value.toLowerCase())} checked={color === "lightblue" ? "checked" : "" }/>Blue
                             <input type="radio" id="Red" name="color" value="Red" onClick={(e)=>setColor(e.target.value.toLowerCase())} checked={color === "red" ? "checked" : "" }/>Red
-                            <input type="radio" id="Green" name="color" value="Green" onClick={(e)=>setColor(e.target.value.toLowerCase())} checked={color === "green" ? "checked" : "" }/>Green
-                            <input type="radio" id="Orange" name="color" value="Orange" onClick={(e)=>setColor(e.target.value.toLowerCase())} checked={color === "orange" ? "checked" : "" }/>Orange <br></br>
+                            <input type="radio" id="Green" name="color" value="LightGreen" onClick={(e)=>setColor(e.target.value.toLowerCase())} checked={color === "lightgreen" ? "checked" : "" }/>Green
+                            <input type="radio" id="Yellow" name="color" value="Yellow" onClick={(e)=>setColor(e.target.value.toLowerCase())} checked={color === "yellow" ? "checked" : "" }/>Yellow <br></br>
                             <button onClick={handleAdd}>Add Note</button>
                         </form>
-                    </div>
-                    {notes.length === 0 ? <h1>No Notes</h1> : allNotes}
+                    </div><br></br>
+                    {notes.length === 0 ? <h1 style={{textAlign:"center"}}>No Notes</h1> : allNotes}
                 </div>
             </div>
         </div>

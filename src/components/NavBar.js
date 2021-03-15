@@ -21,19 +21,8 @@ function NavBar({history, handleLogOut}){
     }
 
     return(
-        // <div className="header">
-        //     <div className="jobra">
-        //         <h1 onClick={()=> history.push('/main')}>Jobra</h1>
-        //     </div>
-        //     <div className="profile">
-        //         <h1 onClick={()=> history.push('/profile')}>Profile</h1>
-        //     </div>
-        //     <div className="logout">
-        //         <h1 onClick={()=> handleLogOut()}>Log Out</h1>
-        //     </div>
-        // </div>
-
         <Menu borderless id="ui-header">
+            <img src={logo} className="jobra-logo" alt="Jobra Logo" style={{height: "38px", width: "38px"}}/>
             <Menu.Item
             name='jobra'
             active={activeItem === 'jobra'}
@@ -48,8 +37,6 @@ function NavBar({history, handleLogOut}){
             >
             Profile
             </Menu.Item>
-            <img src={logo} className="jobra-logo" alt="Jobra Logo"/>
-            <span className="slogan">"Keeping your career on track!"</span>
             <Menu.Menu className="logout-btn" position="right">
                 <Menu.Item
                 name='logout'

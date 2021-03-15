@@ -12,7 +12,7 @@ function UserProfile({currentUser}){
                  currentUser.lanes[1].cards.length,
                  currentUser.lanes[2].cards.length,
                  currentUser.lanes[3].cards.length],
-            backgroundColor: ["moccasin","mediumslateblue","palegreen","crimson"]
+            backgroundColor: ["yellow","lightblue","lightgreen","red"]
         }]
     })
 
@@ -62,13 +62,15 @@ function UserProfile({currentUser}){
             </div>
             <div className="current-user-charts">
                 <div className="charts">
-                    <Pie className="pie-chart" 
+                    <div className="pie-chart">
+                    <Pie 
                     data={{
                         labels: data.labels,
                         datasets: data.datasets
                     }}
                     height='100%'
                     />
+                    </div>
                     <div id ="line-graph">
                         <Line data={lineData} style={{borderColor:"black"}}/>
                     </div>
